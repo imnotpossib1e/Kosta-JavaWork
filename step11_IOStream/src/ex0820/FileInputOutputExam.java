@@ -25,6 +25,14 @@ public class FileInputOutputExam {
                 System.out.println(i + " = " + (char) i);
             }*/
 
+            /*
+            // 1byte씩 읽기 축약형
+            int data;
+            while ((data = fis.read()) != -1) {
+                System.out.println((char) data);
+            }
+             */
+
             // byte 크기만큼 읽기 -> 한글은 글자당 3byte
             // 큰 하일을 읽기에는 무리가 있다.
             // InputStream의 읽을 수 있는 byte 수 반환
