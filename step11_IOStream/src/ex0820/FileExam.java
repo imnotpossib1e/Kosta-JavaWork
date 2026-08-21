@@ -14,7 +14,7 @@ public class FileExam {
         // 현재 경로
         // step11_IOStream/src/ex0820/b.txt
 
-        // 파일 생성
+        // 파일객체 생성
         File file = new File(path);
         // 파일이 있는지 없는지 체크
         if (file.exists()) {
