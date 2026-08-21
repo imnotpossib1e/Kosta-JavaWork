@@ -1,6 +1,10 @@
 package mvc.service;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -32,8 +36,16 @@ public class ElectronicsServiceImpl implements ElectronicsService {
      *
      */
     private ElectronicsServiceImpl() {
-        if (true/*객체를 저장한 파일이 존재한다면*/) {
+        File file = new File("step12_mvc_IO_ObjectSave/src/save.txt");
+        if (file.exists()) {
             // 있으면 파일 읽어오기(exist()) -> 복원(역직렬화)
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+                list = (List<Electronics>) ois.readObject();
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         } else {
             ResourceBundle rb = ResourceBundle.getBundle("InitInfo");//dbInfo.properties
             for (String key : rb.keySet()) {
@@ -144,7 +156,13 @@ public class ElectronicsServiceImpl implements ElectronicsService {
      */
     @Override
     public void saveObject() throws Exception {
-        // TODO Auto-generated method stub
+        try (ObjectOutputStream oos = new ObjectOutputStream(
+            new FileOutputStream("step12_mvc_IO_ObjectSave/src/save.txt"))) {
+            oos.writeObject(list);
+            System.out.println("저장 완료");
+        } catch (Exception e) {
+            throw new Exception();
+        }
 
     }
 

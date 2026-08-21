@@ -48,6 +48,7 @@ public class MenuView {
                     break;
                 case "9":
                     // 프로그램 종료시 파일저장(list를 직렬화) -> Service에 메소드 추가
+                    controller.saveObject();
                     System.exit(0);
                 default:
                     System.out.println("메뉴를 다시 선택해주세요!!!!");
