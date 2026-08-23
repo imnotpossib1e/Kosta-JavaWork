@@ -1,4 +1,4 @@
-/.idea
+*/.idea
 .metadata/
 bin/
 .classpath
@@ -6,3 +6,4 @@ bin/
 .settings/
 out/
 Solution/
+.idea/*
