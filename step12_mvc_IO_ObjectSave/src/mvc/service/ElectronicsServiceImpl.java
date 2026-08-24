@@ -27,6 +27,7 @@ public class ElectronicsServiceImpl implements ElectronicsService {
     private static ElectronicsService instance = new ElectronicsServiceImpl();
     private static final int MAX_SIZE = 6;
     List<Electronics> list = new ArrayList<Electronics>();
+    File file;
 
 
     /**
@@ -36,12 +37,14 @@ public class ElectronicsServiceImpl implements ElectronicsService {
      *
      */
     private ElectronicsServiceImpl() {
-        File file = new File("step12_mvc_IO_ObjectSave/src/save.txt");
+        System.out.println("user.dir = " + System.getProperty("user.dir"));
+        System.out.println("user.home = " + System.getProperty("user.home"));
+        file = new File(System.getProperty("user.dir") + "/save.txt");
         if (file.exists()) {
             // 있으면 파일 읽어오기(exist()) -> 복원(역직렬화)
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
                 list = (List<Electronics>) ois.readObject();
-                
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -157,7 +160,7 @@ public class ElectronicsServiceImpl implements ElectronicsService {
     @Override
     public void saveObject() throws Exception {
         try (ObjectOutputStream oos = new ObjectOutputStream(
-            new FileOutputStream("step12_mvc_IO_ObjectSave/src/save.txt"))) {
+            new FileOutputStream(file))) {
             oos.writeObject(list);
             System.out.println("저장 완료");
         } catch (Exception e) {
