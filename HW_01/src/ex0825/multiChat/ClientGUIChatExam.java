@@ -96,9 +96,8 @@ public class ClientGUIChatExam extends JFrame {
             name = JOptionPane.showInputDialog(this, "대화명을 입력하세요");
             while (true) {
                 pw.println(name);
-                String re = br.readLine();
-                if (re.equals("DUPLICATE")) {
-                    // 이름이 중복인 경우
+                String response = br.readLine();
+                if (response.equals("DUPLICATE")) {
                     name = JOptionPane.showInputDialog(this, "중복된 이름입니다.");
                 } else {
                     break;
