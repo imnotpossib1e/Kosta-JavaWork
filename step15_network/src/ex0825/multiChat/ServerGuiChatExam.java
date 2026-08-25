@@ -68,7 +68,8 @@ public class ServerGuiChatExam {
         ClientSkThread() {
             try {
                 pw = new PrintWriter(sk.getOutputStream(), true); // 데이터 전송
-                br = new BufferedReader(new InputStreamReader(sk.getInputStream())); // 보낸 데이터 읽기
+                br = new BufferedReader(
+                    new InputStreamReader(sk.getInputStream())); // 클라이언트가 보낸 데이터 읽기
             } catch (Exception e) {
                 e.printStackTrace();
             }
