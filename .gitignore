@@ -7,3 +7,6 @@ bin/
 out/
 Solution/
 .idea/*
+
+
+DbProperties.java
